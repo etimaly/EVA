@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<indexing>
+ <object alt="" name="Kép 1" object_type="graphic"/>
+ <object alt="" name="Kép 2" object_type="graphic"/>
+ <object alt="" name="Kép 4" object_type="graphic"/>
+ <paragraph index="15" node_type="writer">Eseményvezérelt alkalmazások	2022/2023 őszi félév</paragraph>
+ <paragraph index="22" node_type="writer">1. Beadandó feladat dokumentáció</paragraph>
+ <paragraph index="23" node_type="writer">Készítette:</paragraph>
+ <paragraph index="24" node_type="writer">etimaly</paragraph>
+ <paragraph index="26" node_type="writer">Feladat:</paragraph>
+ <paragraph index="27" node_type="writer">Elszabadult robot
+Készítsünk programot, amellyel a következő játékot játszhatjuk.
+Adott egy 𝑛 × 𝑛 mezőből álló játékpálya, amelyben egy elszabadult robot bolyong,
+és a feladatunk az, hogy betereljük a pálya közepén található mágnes alá, és így
+elkapjuk.
+A robot véletlenszerű pozícióban kezd, és adott időközönként lép egy mezőt
+(vízszintesen, vagy függőlegesen) úgy, hogy általában folyamatosan előre halad
+egészen addig, amíg falba nem ütközik. Ekkor véletlenszerűen választ egy új
+irányt, és arra halad tovább. Időnként még jobban megkergül, és akkor is irányt
+vált, amikor nem ütközik falba.
+A játékos a robot terelését úgy hajthatja végre, hogy egy mezőt kiválasztva falat
+emelhet rá. A felhúzott falak azonban nem túl strapabíróak. Ha a robot ütközik a
+fallal, akkor az utána eldől. A ledőlt falakat már nem lehet újra felhúzni, ott a
+robot később akadály nélkül áthaladhat.
+A program biztosítson lehetőséget új játék kezdésére a pályaméret megadásával
+(7 × 7, 11 × 11, 15 × 15), valamint játék szüneteltetésére (ekkor nem telik az idő,
+nem lép a robot, és nem lehet mezőt se kiválasztani). Ismerje fel, ha vége a
+játéknak, és jelenítse meg, hogy milyen idővel győzött a játékos. A program játék
+közben folyamatosan jelezze ki a játékidőt. Ezen felül szüneteltetés alatt legyen
+lehetőség a játék elmentésére, valamint betöltésére.</paragraph>
+ <paragraph index="28" node_type="writer">Elemzés:</paragraph>
+ <paragraph index="29" node_type="writer">A játékot 3 tábla méreten játszhatjuk: kicsi(7×7), közepes(11×11), nagy(15×15). A program indításkor egy kicsi táblát indít el.</paragraph>
+ <paragraph index="30" node_type="writer">A feladatot egyablakos asztali alkalmazásként a Windows Forms grafikus felülettel valósítjuk meg.</paragraph>
+ <paragraph index="31" node_type="writer">Az ablakban egy menüt helyezünk el a következő menüpontokkal: File(New Game, Load, Save), Game(Small, Medium, Big), Pause. Az ablak alján egy menü sort helyezünk el, ami kijelzi az eltelt időt és a lerakott falak számát.</paragraph>
+ <paragraph index="32" node_type="writer">A játéktáblát a megfelelő méret nagyságú nyomógombokból álló rács reprezentálja. A nyomógomb kattintásra pirosra változik, ezzel jelezve egy fal letételét és kikapcsolja a gombot a játék végéig. Az összetört falakat barna gombbal jelöljük és a robot helyzetét fekete gombbal.</paragraph>
+ <paragraph index="33" node_type="writer">Amikor vége a játéknak (robot be lett terelve a tábla közepére vagy a tábla minden pontjára le lett rakva egy fal és mindegyik összetört) dialógusablak jön elő. Ekkor a mentés és szüneteltés funkciót kikapcsoljuk.</paragraph>
+ <paragraph index="34" node_type="writer">A felhasználó esetek a következő ábrán látható:</paragraph>
+ <paragraph index="37" node_type="writer">Tervezés:</paragraph>
+ <paragraph index="38" node_type="writer">Programszerkezet:</paragraph>
+ <paragraph index="39" node_type="writer">A programot háromrétegű architektúrában valósítjuk meg. A megjelenítés a View, a modell a Model, míg a perzisztencia a Persistence névtérben helyezkedik el. A program csomagszerkezete:</paragraph>
+ <paragraph index="41" node_type="writer">A program szerkezetét két projektre osztjuk implementációs
+megfontolásból: a Persistence és Model csomagok a program
+felületfüggetlen projektjében, míg a View csomag a Windows Formstól függő projektjében kap helyet.</paragraph>
+ <paragraph index="43" node_type="writer">Perzisztencia:</paragraph>
+ <paragraph index="45" node_type="writer">Az adatkezelés a robot és a táblával kapcsolatos információk tárolására, valamint a betöltés/mentés biztosítása.</paragraph>
+ <paragraph index="47" node_type="writer">A hosszú távú adatkezelés lehetőségeit a GameFromFile interfész biztosítja, ami lehetőséget ad mentésre (Save) és betöltésre (Load)</paragraph>
+ <paragraph index="49" node_type="writer">Az interfészt szöveges fájl alapú adatkezelésre a GameFromText osztály valósítja meg. A fájlkezelés során fellépő hibákat a GameFromFileException osztály kivétel jelzi.</paragraph>
+ <paragraph index="51" node_type="writer">A program az adatokat szöveges fájlként tudja eltárolni, melyek txt kiterjesztésüek. Az adatokat játék vége elött bármikor el lehet menteni és új játékot betölteni a játék vége után is lehet.</paragraph>
+ <paragraph index="53" node_type="writer">A fájl első sora megadja a tábla méretet, robot helyzetét, megőrülés esélyét, időt, falak száma, ledőlt falak száma és a robot iránya. A fájl többi része izomorf leképzése a táblának, azaz méretnek megfelelő sor darabszám és szóközökkel elválasztva 0,1,2 számok (0: üres, 1: fal, 2: lerombolt fal).</paragraph>
+ <paragraph index="55" node_type="writer">Modell:</paragraph>
+ <paragraph index="57" node_type="writer">A modell lényegi részét a Game osztály valósítja meg, amely szabályozza a robot lépését, falak helyezését, valamint a játék egyéb paramétereit, úgymint az időt (_time), nem ledőlt falak száma (_walls), ledőlt falak száma(_brokenWalls). Az osztály lehetőséget ad új játék (NewGame), valamint egy kör lejátszására (round, léptetti a robotot és megnézi, hogy játéknak vége van-e és frissíti az adattagokat). Új játéknál megadható a tábla mérete is.</paragraph>
+ <paragraph index="59" node_type="writer">A játékállapot változásáról a GameAdvanced esemény, míg a játék végéről
+a GameOver esemény tájékoztat. Az események argumentuma
+(GameEvent) tárolja a győzelem állapotát, a falak számát, ledőlt falak valamint a játékidőt.</paragraph>
+ <paragraph index="61" node_type="writer">A modell pédányosításkor megkapja az adatkezelés felületét, amelyeknek segítségével lehetőséget ad betöltésre (Load) és mentésre (Save).</paragraph>
+ <paragraph index="63" node_type="writer">A robot írányát felsorolási típuson át kezeljük.</paragraph>
+ <paragraph index="65" node_type="writer">Nézet:</paragraph>
+ <paragraph index="67" node_type="writer">A nézetet a Form1 osztály biztosítja, amely tárolja a modell egy példányát (_game).</paragraph>
+ <paragraph index="69" node_type="writer">A tábla egy dinamikusan létrehozott gombmező (_buttonMatrix) reprezentálja. A felületen létrehozzuk a megfelelő menüpontokat, illetve a státuszsort, valamint dialógusablakokat, és a hozzájuk tartozó eseménykezelőket. A tábla generálását (GenerateButtonMatrix), illetve az értékek beállítását (Setup_Menu) végzi el, az ablak méretét a (SetupSize) állítja be.</paragraph>
+ <paragraph index="74" node_type="writer">Program statikus szerkezete:</paragraph>
+ <paragraph index="78" node_type="writer">Tesztelés:</paragraph>
+ <paragraph index="79" node_type="writer">A modell funkcionalitása egységtesztek segítségével lett ellenőrizve a UnitTest1 osztályban.</paragraph>
+ <paragraph index="80" node_type="writer">Az alábbi tesztek lettek megvalósítva:</paragraph>
+ <paragraph index="81" node_type="writer">NewGameSmallTest, NewGameMediumTest, NewGameBigTest: Új játék indítás, a mezők kitöltése, falak száma, lerombolt falak száma, tábla mérete és az idő függvényében.</paragraph>
+ <paragraph index="82" node_type="writer">PlaceTest, PlaceSamePlaceTest: Fal lerakás ellenőrzése egy üres helyre és fal lerakása egy foglalt helyre.</paragraph>
+ <paragraph index="83" node_type="writer">RoundWithNoWallTest, RoundWithWallTest: Egy kör lefolyásának ellenőrzése (robot helyzete és iránya, falak száma, lerombolt falak száma, idő). Fal ütközés esetén irányt nem ellenőrzünk, mert az véletlenszerű. (a megőrülés esélye 0 vagy különben a tesztelés nem lehetséges)</paragraph>
+ <paragraph index="84" node_type="writer">LoadTest: Leteszteli a load függvény helyességét (modell betöltése).</paragraph>
+</indexing>

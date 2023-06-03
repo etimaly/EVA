@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "CrazyRobotView/1.0.0": {
+        "dependencies": {
+          "CrazyRobot": "1.0.0"
+        },
+        "runtime": {
+          "CrazyRobotView.dll": {}
+        }
+      },
+      "CrazyRobot/1.0.0": {
+        "runtime": {
+          "CrazyRobot.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CrazyRobotView/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CrazyRobot/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

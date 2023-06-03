@@ -1,0 +1,81 @@
+﻿<Window x:Class="CrazyRobotWPF.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CrazyRobotWPF.View"
+        mc:Ignorable="d"
+        Title="Crazy robot" Height="Auto" Width="Auto" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="New Game" Command="{Binding NewGameCommand}" />
+                <Separator />
+                <MenuItem Header="Load" Command="{Binding LoadGameCommand}" />
+                <MenuItem Header ="Save" Command="{Binding SaveGameCommand}" />
+            </MenuItem>
+
+            <MenuItem Header="Size">
+                <MenuItem Header="Small" IsCheckable="True" IsChecked="{Binding SmallCommand}" />
+                <MenuItem Header="Medium" IsCheckable="True" IsChecked="{Binding MediumCommand}" />
+                <MenuItem Header="Big" IsCheckable="True" IsChecked="{Binding BigCommand}" />
+            </MenuItem>
+
+            <MenuItem Header="Pause" Command="{Binding PauseGameCommand}" />
+        </Menu>
+
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Fields}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="{Binding N}" Columns="{Binding N}" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Command="{Binding StepCommand}" CommandParameter="{Binding Number}" Width="50" Height="50" IsEnabled="{Binding IsLocked}">
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Button.RenderTransform>
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Wall}" Value="True">
+                                        <Setter Property="Background" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding BrokenWall}" Value="True">
+                                        <Setter Property="Background" Value="Brown" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Robot}" Value="True">
+                                        <Setter Property="Background" Value="Black" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>
+                <TextBlock Text="Elapsed time: " />
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="{Binding GameTime}" />
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="Placed Walls" />
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="{Binding GamePlacedWallsCount}" />
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

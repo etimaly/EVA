@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrazyRobotMaui.View.GamePage"
+             Title="Crazy Robot">
+    <Grid Margin="4" RowSpacing="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Button Text="Új játék" Command="{Binding NewGameCommand}" Grid.Row="0" HorizontalOptions="Start" />
+        <Button Text="Pause" Command="{Binding PauseGameCommand}" Grid.Row="0" HorizontalOptions="End" />
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Button Text="Save" Command="{Binding SaveGameCommand}"/>
+            <Button Text="Load" Command="{Binding LoadGameCommand}"/>
+            <Button Text="Small" Command="{Binding NewGameCommand}" CommandParameter="7"/>
+            <Button Text="Medium" Command="{Binding NewGameCommand}" CommandParameter="11"/>
+            <Button Text="Big" Command="{Binding NewGameCommand}" CommandParameter="15" />
+        </HorizontalStackLayout>
+
+        <Grid
+            Grid.Row="1"
+            BindableLayout.ItemsSource="{Binding Fields}"
+            RowDefinitions="{Binding GameTableRows}"
+            ColumnDefinitions="{Binding GameTableColumns}"
+            ColumnSpacing="4"
+            RowSpacing="4"
+            >
+
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+
+                    <Button
+                        Grid.Row="{Binding X}"
+                        Grid.Column="{Binding Y}"
+                        Command="{Binding StepCommand}"
+                        CommandParameter="{Binding Number}"
+                        MaximumHeightRequest="50"
+                        MaximumWidthRequest="50"
+                        Text="{Binding T}"
+                        IsEnabled="{Binding IsLocked}"
+                        Padding="0"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand" />
+
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </Grid>
+
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Grid.Row="2">
+            <Label Text="Fal: " />
+            <Label Text="{Binding GamePlacedWallsCount}" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="End" Grid.Row="2">
+            <Label Text="Játékidő: " />
+            <Label Text="{Binding GameTime}" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

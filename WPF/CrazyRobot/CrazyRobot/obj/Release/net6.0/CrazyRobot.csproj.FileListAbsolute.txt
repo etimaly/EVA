@@ -1,0 +1,15 @@
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\bin\Release\net6.0\CrazyRobot.exe
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\bin\Release\net6.0\CrazyRobot.deps.json
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\bin\Release\net6.0\CrazyRobot.runtimeconfig.json
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\bin\Release\net6.0\CrazyRobot.dll
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\bin\Release\net6.0\CrazyRobot.pdb
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\obj\Release\net6.0\CrazyRobot.csproj.AssemblyReference.cache
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\obj\Release\net6.0\CrazyRobot.GeneratedMSBuildEditorConfig.editorconfig
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\obj\Release\net6.0\CrazyRobot.AssemblyInfoInputs.cache
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\obj\Release\net6.0\CrazyRobot.AssemblyInfo.cs
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\obj\Release\net6.0\CrazyRobot.csproj.CoreCompileInputs.cache
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\obj\Release\net6.0\CrazyRobot.dll
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\obj\Release\net6.0\refint\CrazyRobot.dll
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\obj\Release\net6.0\CrazyRobot.pdb
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\obj\Release\net6.0\CrazyRobot.genruntimeconfig.cache
+E:\elte\3_felev\EVA\Beadando_1_winForms\Beadando_A73EXW\CrazyRobot\CrazyRobot\obj\Release\net6.0\ref\CrazyRobot.dll
